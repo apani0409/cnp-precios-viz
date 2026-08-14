@@ -1,32 +1,36 @@
-# React + TypeScript + Vite
+# Precios Agrícolas CNP — Costa Rica
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Visualización interactiva de 4 años de precios agrícolas semanales publicados por el
+Consejo Nacional de Producción (CNP) de Costa Rica: **9,184 registros, 56 productos,
+2021–2024**.
 
-Currently, two official plugins are available:
+**Demo en vivo:** https://cnp-precios-viz.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Qué hace
 
-## React Compiler
+- Serie temporal interactiva por producto, con selector múltiple y filtro de rango de fechas
+- Tabla de estadísticas por producto (media, mediana, mínimo, máximo, desviación estándar)
+- Descarga del subconjunto de datos filtrado como CSV
+- Renderizado 100% en el cliente — sin backend, sin base de datos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Stack
 
-## Expanding the Oxlint configuration
+React 19 + TypeScript + Vite · Plotly.js para las gráficas · PapaParse para el parseo del CSV.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Datos
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+Los datos provienen del histórico de boletines de precios del CNP, recopilados originalmente
+para el proyecto deferia.cr (UCR × FAO). El CSV crudo vive en `public/raw_prices.csv`.
+
+## Desarrollo local
+
+```bash
+bun install
+bun run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Build
+
+```bash
+bun run build
+```
